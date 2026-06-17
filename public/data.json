@@ -44,7 +44,7 @@
     {
       "id": 2,
       "url": "https://opti-scan-ai.netlify.app/",
-      "title": "Elma OptiScan AI – Kalkulator",
+      "title": "OptiScan AI – Kalkulator Wydajności",
       "description_generated": "Zautomatyzowany prototyp i analiza portalu opti-scan-ai.netlify.app. Projekt prezentuje wdrożenie optymalizacji wydajności, zaawansowane skrypty interaktywne oraz czysty, responsywny design dostosowany do urządzeń mobilnych.",
       "tech_stack": [
         "HTML",
@@ -52,7 +52,7 @@
         "JavaScript"
       ],
       "thumbnail_url": "/uploads/screenshots/project_2.svg",
-      "category_id": 4,
+      "category_id": 3,
       "tags": [
         "prototyp",
         "web-development",
