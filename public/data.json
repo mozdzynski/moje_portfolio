@@ -1,6 +1,12 @@
 {
   "categories": [
     {
+      "id": 4,
+      "name": "Aplikacje Webowe",
+      "description": "Zaawansowane aplikacje i systemy internetowe",
+      "slug": "aplikacje-webowe"
+    },
+    {
       "id": 1,
       "name": "Strony i Portale",
       "description": "Nowoczesne witryny i platformy internetowe",
@@ -8,15 +14,9 @@
     },
     {
       "id": 3,
-      "name": "Analizy i Narzędzia",
+      "name": "Narzędzia",
       "description": "Narzędzia analityczne i skrypty biznesowe",
-      "slug": "analizy-i-narzedzia"
-    },
-    {
-      "id": 4,
-      "name": "Aplikacje Webowe",
-      "description": "Zaawansowane aplikacje i systemy internetowe",
-      "slug": "aplikacje-webowe"
+      "slug": "narzedzia"
     }
   ],
   "projects": [
