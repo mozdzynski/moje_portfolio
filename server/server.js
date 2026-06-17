@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 // ----------------------------------------------------
@@ -215,6 +215,57 @@ app.post('/api/git/deploy', async (req, res) => {
     res.json(deployResult);
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// ----------------------------------------------------
+// Thumbnail Upload Endpoint
+// ----------------------------------------------------
+app.post('/api/projects/:id/upload-thumbnail', (req, res) => {
+  const { id } = req.params;
+  const { base64Data } = req.body;
+
+  if (!base64Data) {
+    return res.status(400).json({ error: 'Brak danych pliku obrazu.' });
+  }
+
+  try {
+    const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+    if (!matches || matches.length !== 3) {
+      return res.status(400).json({ error: 'Niepoprawny format danych base64.' });
+    }
+
+    const mimeType = matches[1];
+    const base64String = matches[2];
+    const buffer = Buffer.from(base64String, 'base64');
+
+    let ext = 'png';
+    if (mimeType.includes('jpeg') || mimeType.includes('jpg')) ext = 'jpg';
+    else if (mimeType.includes('webp')) ext = 'webp';
+    else if (mimeType.includes('gif')) ext = 'gif';
+    else if (mimeType.includes('svg')) ext = 'svg';
+
+    const filename = `project_${id}_custom_${Date.now()}.${ext}`;
+    const uploadsDir = path.join(__dirname, '../public/uploads/screenshots');
+    
+    if (!fs.existsSync(uploadsDir)) {
+      fs.mkdirSync(uploadsDir, { recursive: true });
+    }
+
+    const outputPath = path.join(uploadsDir, filename);
+    fs.writeFileSync(outputPath, buffer);
+
+    const relativeUrl = `/uploads/screenshots/${filename}`;
+
+    const updatedProject = db.updateProject(id, { thumbnail_url: relativeUrl });
+    if (!updatedProject) {
+      return res.status(404).json({ error: 'Projekt o podanym ID nie istnieje.' });
+    }
+
+    res.json({ success: true, thumbnail_url: relativeUrl });
+  } catch (error) {
+    console.error('Błąd podczas zapisywania przesłanego pliku:', error);
+    res.status(500).json({ error: `Błąd serwera: ${error.message}` });
   }
 });
 

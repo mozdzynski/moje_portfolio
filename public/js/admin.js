@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const draftTags = document.getElementById('draft-tags');
   const draftImgFrame = document.getElementById('draft-img-frame');
   const draftThumbPath = document.getElementById('draft-thumbnail-path');
+  const draftThumbFile = document.getElementById('draft-thumbnail-file');
   const btnDiscard = document.getElementById('btn-discard-draft');
 
   // Category Form Elements
@@ -340,6 +341,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Handle custom thumbnail upload
+  draftThumbFile.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const id = draftId.value;
+    if (!id) {
+      alert("Najpierw musisz zaimportować lub wybrać projekt.");
+      draftThumbFile.value = '';
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const base64Data = reader.result;
+      
+      draftImgFrame.innerHTML = `<div class="spinner"></div><p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem;">Przesyłanie...</p>`;
+      
+      try {
+        const response = await fetch(`/api/projects/${id}/upload-thumbnail`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ base64Data })
+        });
+        
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Błąd wgrywania pliku.');
+        
+        draftThumbPath.value = data.thumbnail_url;
+        draftImgFrame.innerHTML = `<img src="${data.thumbnail_url}?t=${Date.now()}" alt="Custom Thumbnail Preview">`;
+        draftThumbFile.value = '';
+      } catch (err) {
+        alert(`Błąd: ${err.message}`);
+        if (draftThumbPath.value) {
+          draftImgFrame.innerHTML = `<img src="${draftThumbPath.value}" alt="Screenshot Preview">`;
+        } else {
+          draftImgFrame.innerHTML = `<span class="no-img">Brak miniatury</span>`;
+        }
+        draftThumbFile.value = '';
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+
   // Submit Draft to DB (Publish)
   draftForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -348,6 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = draftTitle.value.trim();
     const category_id = draftCategory.value;
     const description_generated = draftDesc.value.trim();
+    const thumbnail_url = draftThumbPath.value.trim();
     
     // Convert tech stack and tags back to arrays
     const tech_stack = draftTech.value.split(',').map(s => s.trim()).filter(Boolean);
@@ -363,6 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
           description_generated,
           tech_stack,
           tags,
+          thumbnail_url,
           status: 'published' // Publish it!
         })
       });
