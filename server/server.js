@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import fs from 'fs';
 import { db } from './db.js';
 import { scrapeURL } from './scraper.js';
 import { generateProjectContent } from './ai.js';
