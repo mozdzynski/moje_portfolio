@@ -19,10 +19,10 @@ function initDB() {
   if (!fs.existsSync(dbPath)) {
     const defaultData = {
       categories: [
+        { id: 4, name: "Aplikacje Webowe", description: "Zaawansowane aplikacje i systemy internetowe", slug: "aplikacje-webowe" },
         { id: 1, name: "Strony i Portale", description: "Nowoczesne witryny i platformy internetowe", slug: "strony-i-portale" },
         { id: 2, name: "Automatyzacje", description: "Systemy automatyzacji i integracje API", slug: "automatyzacje" },
-        { id: 3, name: "Analizy i Narzędzia", description: "Narzędzia analityczne i skrypty biznesowe", slug: "analizy-i-narzedzia" },
-        { id: 4, name: "Aplikacje Webowe", description: "Zaawansowane aplikacje i systemy internetowe", slug: "aplikacje-webowe" }
+        { id: 3, name: "Narzędzia", description: "Narzędzia analityczne i skrypty biznesowe", slug: "narzedzia" }
       ],
       projects: []
     };

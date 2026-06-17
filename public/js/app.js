@@ -190,5 +190,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Secret triggers for Admin Panel access
+  // 1. Double-click on the logo
+  const brandLogo = document.getElementById('brand-logo');
+  if (brandLogo) {
+    brandLogo.addEventListener('dblclick', () => {
+      window.location.href = 'admin.html';
+    });
+  }
+
+  // 2. Keyboard shortcut Ctrl + Shift + A (Admin)
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+      e.preventDefault();
+      window.location.href = 'admin.html';
+    }
+  });
+
   loadData();
 });
