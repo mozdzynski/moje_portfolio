@@ -151,6 +151,27 @@
       "status": "published",
       "created_at": "2026-06-17T11:07:12.519Z",
       "seo_meta_desc": "Projekt portfolio Tomasza Możdżyńskiego: PBE Elbud Poznań S.A. | Budowa Linii i Stacji Elektroenergetycznych. Sprawdź szczegóły wdrożenia technologicznego i automatyzacji."
+    },
+    {
+      "id": 7,
+      "url": "https://scada-symulator.netlify.app/",
+      "title": "SCADA Digital Twin - PBE Elbud",
+      "description_generated": "Zautomatyzowany prototyp i analiza portalu scada-symulator.netlify.app. Projekt prezentuje wdrożenie optymalizacji wydajności, zaawansowane skrypty interaktywne oraz czysty, responsywny design dostosowany do urządzeń mobilnych.",
+      "tech_stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "thumbnail_url": "/uploads/screenshots/project_7.svg",
+      "category_id": 4,
+      "tags": [
+        "prototyp",
+        "web-development",
+        "scada-symulator"
+      ],
+      "status": "published",
+      "created_at": "2026-06-17T11:31:38.561Z",
+      "seo_meta_desc": "Projekt portfolio Tomasza Możdżyńskiego: SCADA Digital Twin - PBE Elbud Poznań S.A.. Sprawdź szczegóły wdrożenia technologicznego i automatyzacji."
     }
   ]
 }
