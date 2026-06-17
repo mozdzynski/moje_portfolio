@@ -23,7 +23,7 @@
     {
       "id": 1,
       "url": "https://brygada.netlify.app/",
-      "title": "BRYGADA - System Zarządzania Z",
+      "title": "BRYGADA - System Zarządzania Zadaniami",
       "description_generated": "Zautomatyzowany prototyp i analiza portalu brygada.netlify.app. Projekt prezentuje wdrożenie optymalizacji wydajności, zaawansowane skrypty interaktywne oraz czysty, responsywny design dostosowany do urządzeń mobilnych.",
       "tech_stack": [
         "HTML",
