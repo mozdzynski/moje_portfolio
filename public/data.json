@@ -1,0 +1,156 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Strony i Portale",
+      "description": "Nowoczesne witryny i platformy internetowe",
+      "slug": "strony-i-portale"
+    },
+    {
+      "id": 2,
+      "name": "Automatyzacje",
+      "description": "Systemy automatyzacji i integracje API",
+      "slug": "automatyzacje"
+    },
+    {
+      "id": 3,
+      "name": "Analizy i Narzędzia",
+      "description": "Narzędzia analityczne i skrypty biznesowe",
+      "slug": "analizy-i-narzedzia"
+    },
+    {
+      "id": 4,
+      "name": "Aplikacje Webowe",
+      "description": "Zaawansowane aplikacje i systemy internetowe",
+      "slug": "aplikacje-webowe"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "url": "https://brygada.netlify.app/",
+      "title": "BRYGADA - System Zarządzania Z",
+      "description_generated": "Zautomatyzowany prototyp i analiza portalu brygada.netlify.app. Projekt prezentuje wdrożenie optymalizacji wydajności, zaawansowane skrypty interaktywne oraz czysty, responsywny design dostosowany do urządzeń mobilnych.",
+      "tech_stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "thumbnail_url": "/uploads/screenshots/project_1.svg",
+      "category_id": 4,
+      "tags": [
+        "prototyp",
+        "web-development",
+        "brygada"
+      ],
+      "status": "published",
+      "created_at": "2026-06-17T11:01:26.584Z",
+      "seo_meta_desc": "Projekt portfolio Tomasza Możdżyńskiego: BRYGADA - System Zarządzania Zadaniami. Sprawdź szczegóły wdrożenia technologicznego i automatyzacji."
+    },
+    {
+      "id": 2,
+      "url": "https://opti-scan-ai.netlify.app/",
+      "title": "Elma OptiScan AI – Kalkulator",
+      "description_generated": "Zautomatyzowany prototyp i analiza portalu opti-scan-ai.netlify.app. Projekt prezentuje wdrożenie optymalizacji wydajności, zaawansowane skrypty interaktywne oraz czysty, responsywny design dostosowany do urządzeń mobilnych.",
+      "tech_stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "thumbnail_url": "/uploads/screenshots/project_2.svg",
+      "category_id": 4,
+      "tags": [
+        "prototyp",
+        "web-development",
+        "opti-scan-ai"
+      ],
+      "status": "published",
+      "created_at": "2026-06-17T11:04:18.262Z",
+      "seo_meta_desc": "Projekt portfolio Tomasza Możdżyńskiego: Elma OptiScan AI – Kalkulator Oszczędności i Dobór Kompensacji Mocy Biernej. Sprawdź szczegóły wdrożenia technologicznego i automatyzacji."
+    },
+    {
+      "id": 3,
+      "url": "https://grid-simulator.netlify.app/",
+      "title": "Elma GridSimulator – Wirtualny",
+      "description_generated": "Zautomatyzowany prototyp i analiza portalu grid-simulator.netlify.app. Projekt prezentuje wdrożenie optymalizacji wydajności, zaawansowane skrypty interaktywne oraz czysty, responsywny design dostosowany do urządzeń mobilnych.",
+      "tech_stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "thumbnail_url": "/uploads/screenshots/project_3.svg",
+      "category_id": 4,
+      "tags": [
+        "prototyp",
+        "web-development",
+        "grid-simulator"
+      ],
+      "status": "published",
+      "created_at": "2026-06-17T11:04:44.263Z",
+      "seo_meta_desc": "Projekt portfolio Tomasza Możdżyńskiego: Elma GridSimulator – Wirtualny Oscyloskop i Analizator Wyższych Harmonicznych. Sprawdź szczegóły wdrożenia technologicznego i automatyzacji."
+    },
+    {
+      "id": 4,
+      "url": "https://srserwis-strona.netlify.app/",
+      "title": "SR Serwis – Windy Osobowe i Fo",
+      "description_generated": "Zautomatyzowany prototyp i analiza portalu srserwis-strona.netlify.app. Projekt prezentuje wdrożenie optymalizacji wydajności, zaawansowane skrypty interaktywne oraz czysty, responsywny design dostosowany do urządzeń mobilnych.",
+      "tech_stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "thumbnail_url": "/uploads/screenshots/project_4.svg",
+      "category_id": 1,
+      "tags": [
+        "prototyp",
+        "web-development",
+        "srserwis-strona"
+      ],
+      "status": "published",
+      "created_at": "2026-06-17T11:05:48.331Z",
+      "seo_meta_desc": "Projekt portfolio Tomasza Możdżyńskiego: SR Serwis – Windy Osobowe i Fotowoltaika Gdańsk, Kowale, Otomin. Sprawdź szczegóły wdrożenia technologicznego i automatyzacji."
+    },
+    {
+      "id": 5,
+      "url": "https://rodtrans-strona.netlify.app/",
+      "title": "RODTRANS - Transport, Spedycja",
+      "description_generated": "Zautomatyzowany prototyp i analiza portalu rodtrans-strona.netlify.app. Projekt prezentuje wdrożenie optymalizacji wydajności, zaawansowane skrypty interaktywne oraz czysty, responsywny design dostosowany do urządzeń mobilnych.",
+      "tech_stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "thumbnail_url": "/uploads/screenshots/project_5.svg",
+      "category_id": 1,
+      "tags": [
+        "prototyp",
+        "web-development",
+        "rodtrans-strona"
+      ],
+      "status": "published",
+      "created_at": "2026-06-17T11:06:33.032Z",
+      "seo_meta_desc": "Projekt portfolio Tomasza Możdżyńskiego: RODTRANS - Transport, Spedycja i Magazynowanie Nowe Marzy A1. Sprawdź szczegóły wdrożenia technologicznego i automatyzacji."
+    },
+    {
+      "id": 6,
+      "url": "https://pbe-elbud-poznan.netlify.app/",
+      "title": "PBE Elbud Poznań S.A.",
+      "description_generated": "Zautomatyzowany prototyp i analiza portalu pbe-elbud-poznan.netlify.app. Projekt prezentuje wdrożenie optymalizacji wydajności, zaawansowane skrypty interaktywne oraz czysty, responsywny design dostosowany do urządzeń mobilnych.",
+      "tech_stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "thumbnail_url": "/uploads/screenshots/project_6.svg",
+      "category_id": 1,
+      "tags": [
+        "prototyp",
+        "web-development",
+        "pbe-elbud-poznan"
+      ],
+      "status": "published",
+      "created_at": "2026-06-17T11:07:12.519Z",
+      "seo_meta_desc": "Projekt portfolio Tomasza Możdżyńskiego: PBE Elbud Poznań S.A. | Budowa Linii i Stacji Elektroenergetycznych. Sprawdź szczegóły wdrożenia technologicznego i automatyzacji."
+    }
+  ]
+}

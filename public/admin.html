@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Panel - System Zautomatyzowanego Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- Navigation bar -->
+  <nav class="navbar" id="admin-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" id="brand-logo-admin">T. Możdżyński <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-dark); margin-left: 0.5rem;">CMS PANEL</span></a>
+      <div class="nav-links" id="admin-menu">
+        <a href="index.html" class="nav-link" id="nav-back">Wróć do Portfolio</a>
+        <a href="admin.html" class="nav-link active" id="nav-admin-panel">CMS Panel</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-container" id="admin-main">
+    <div class="admin-grid" id="admin-layout-grid">
+      
+      <!-- LEFT COLUMN: Workspace Forms -->
+      <div class="workspace-col" id="admin-workspace-col">
+        
+        <!-- Panel 1: URL Scraping & AI Automation -->
+        <section class="admin-panel" id="panel-url-analyze">
+          <h2 class="panel-title" id="title-url-analyze">Importuj Projekt z URL</h2>
+          <form id="url-analyze-form">
+            <div class="form-group">
+              <label for="input-url">Adres URL Aplikacji</label>
+              <input type="url" id="input-url" class="form-control" placeholder="https://moja-aplikacja.netlify.app" required>
+            </div>
+            <div class="form-group">
+              <label for="select-category">Kategoria</label>
+              <select id="select-category" class="form-control" required>
+                <!-- Categories loaded dynamically -->
+              </select>
+            </div>
+            <button type="submit" class="btn-primary btn-block" id="btn-submit-analyze">
+              Rozpocznij Analizę Automatyczną
+            </button>
+          </form>
+          
+          <!-- Stepper for progress tracking -->
+          <div class="stepper" id="analysis-stepper">
+            <div class="step" id="step-scrape">
+              <span class="step-icon"></span> 1. Pobieranie danych tekstowych (<head> i <body>)...
+            </div>
+            <div class="step" id="step-ai">
+              <span class="step-icon"></span> 2. Analiza treści i generowanie opisu AI (Gemini)...
+            </div>
+            <div class="step" id="step-screenshot">
+              <span class="step-icon"></span> 3. Generowanie miniatury w tle (Puppeteer/Fallback)...
+            </div>
+            <div class="step" id="step-complete">
+              <span class="step-icon"></span> Gotowe! Sprawdź i edytuj wygenerowany projekt poniżej.
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel 2: Draft Review Form (Hidden by default) -->
+        <section class="admin-panel" id="panel-draft-review" style="display: none;">
+          <h2 class="panel-title" id="title-draft-review">
+            Draft: Podgląd i Edycja Projektu
+            <span class="status-badge draft" id="draft-badge-status">Draft</span>
+          </h2>
+          
+          <form id="draft-review-form">
+            <input type="hidden" id="draft-id">
+            <input type="hidden" id="draft-url">
+            
+            <div class="draft-layout">
+              <!-- Text fields -->
+              <div class="draft-fields">
+                <div class="form-group">
+                  <label for="draft-title">Tytuł Projektu</label>
+                  <input type="text" id="draft-title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="draft-category">Kategoria</label>
+                  <select id="draft-category" class="form-control" required>
+                    <!-- Loaded dynamically -->
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="draft-description">Wygenerowany Opis AI (Problem & Rozwiązanie)</label>
+                  <textarea id="draft-description" class="form-control" required></textarea>
+                </div>
+              </div>
+              
+              <!-- Thumbnail preview & tags -->
+              <div class="draft-meta">
+                <div class="form-group">
+                  <label>Zrzut Ekranu / Miniatura</label>
+                  <div class="preview-card">
+                    <div class="preview-img-frame" id="draft-img-frame">
+                      <!-- Rendered img or loading -->
+                      <span class="no-img">Brak miniatury</span>
+                    </div>
+                  </div>
+                  <input type="text" id="draft-thumbnail-path" class="form-control" style="margin-top: 0.5rem; font-size: 0.8rem;" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="draft-tech-stack">Użyte Technologie (rozdzielane przecinkami)</label>
+                  <input type="text" id="draft-tech-stack" class="form-control" placeholder="React, Node.js, Express">
+                </div>
+                <div class="form-group">
+                  <label for="draft-tags">Tagi SEO (rozdzielane przecinkami)</label>
+                  <input type="text" id="draft-tags" class="form-control" placeholder="automatyzacja, scraper, landing-page">
+                </div>
+              </div>
+            </div>
+
+            <!-- Action controls -->
+            <div class="draft-actions">
+              <button type="submit" class="btn-primary" id="btn-save-publish">
+                Zatwierdź i Opublikuj Projekt
+              </button>
+              <button type="button" class="btn-secondary" id="btn-discard-draft" style="border-color: var(--color-danger); color: var(--color-danger);">
+                Odrzuć Draft
+              </button>
+            </div>
+          </form>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Lists & Controls -->
+      <div class="sidebar-col" id="admin-sidebar-col">
+        
+        <!-- Panel 3: Sync & Deploy -->
+        <section class="admin-panel" id="panel-deploy-control">
+          <h2 class="panel-title" id="title-deploy-control">Synchronizacja & Deploy</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+            Wszystkie zmiany są zapisywane lokalnie w pliku data.json. Kliknij przycisk poniżej, aby automatycznie wypchnąć je na GitHuba i odświeżyć stronę na Netlify.
+          </p>
+          <form id="git-deploy-form">
+            <div class="form-group">
+              <label for="input-commit-msg">Wiadomość Zatwierdzenia (Commit Message)</label>
+              <input type="text" id="input-commit-msg" class="form-control" value="CMS: Aktualizacja projektów portfolio" required>
+            </div>
+            <button type="submit" class="btn-primary btn-block" id="btn-git-push" style="background: var(--gradient-purple); box-shadow: 0 4px 15px rgba(168, 85, 247, 0.25);">
+              Wyślij Zmiany na GitHub & Netlify
+            </button>
+          </form>
+          
+          <!-- Git push console logs -->
+          <div class="git-terminal" id="git-logs-terminal"></div>
+        </section>
+
+        <!-- Panel 4: Categories Manager -->
+        <section class="admin-panel" id="panel-categories-manager">
+          <h2 class="panel-title" id="title-categories-manager">Zarządzaj Kategoriami</h2>
+          <form id="category-add-form" style="margin-bottom: 1.5rem;">
+            <div class="form-group">
+              <label for="input-cat-name">Nazwa Kategorii</label>
+              <input type="text" id="input-cat-name" class="form-control" placeholder="np. Skrypty i Narzędzia" required>
+            </div>
+            <div class="form-group">
+              <label for="input-cat-desc">Opis</label>
+              <input type="text" id="input-cat-desc" class="form-control" placeholder="Krótki opis kategorii">
+            </div>
+            <button type="submit" class="btn-primary btn-block" id="btn-add-category" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+              Dodaj Kategorię
+            </button>
+          </form>
+
+          <h3 style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase;">Zdefiniowane Kategorie</h3>
+          <ul class="admin-list" id="categories-list-root">
+            <!-- Loaded dynamically -->
+          </ul>
+        </section>
+
+        <!-- Panel 5: Projects Manager -->
+        <section class="admin-panel" id="panel-projects-manager">
+          <h2 class="panel-title" id="title-projects-manager">Projekty</h2>
+          <ul class="admin-list" id="projects-list-root">
+            <!-- Loaded dynamically -->
+          </ul>
+        </section>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="admin-footer">
+    <p>&copy; 2026 Tomasz Możdżyński. Panel CMS do obsługi Portfolio.</p>
+  </footer>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

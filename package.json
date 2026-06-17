@@ -1,0 +1,18 @@
+{
+  "name": "portfolio-cms",
+  "version": "1.0.0",
+  "description": "Automated Portfolio CMS for Tomasz Możdżyński",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "admin": "node server/server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "puppeteer": "^22.12.0"
+  },
+  "type": "module"
+}
